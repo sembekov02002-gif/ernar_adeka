@@ -1,0 +1,79 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffcad4;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+}
+
+.bear-img {
+    width: 200px;
+    border-radius: 15px;
+}
+
+h1 {
+    color: #b91d47;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.yes {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    z-index: 100;
+}
+
+.no {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Анимация сердечек */
+.heart {
+    position: absolute;
+    top: -10%;
+    color: #ff4d6d;
+    font-size: 20px;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+.success-text {
+    font-size: 28px;
+    color: #b91d47;
+    font-weight: bold;
+    margin-top: 20px;
+}
