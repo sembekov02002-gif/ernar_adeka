@@ -1,0 +1,48 @@
+const noBtn = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
+const mainContainer = document.getElementById('main-content');
+
+const phrases = [
+    "Жоооқ", "Точно ма?", "Пожалуйста", "Позязя", 
+    "Ну пж пж пж", "Өтінемін...", "Сенімдісің бе?", "Жоқ демеші"
+];
+
+let phraseIndex = 0;
+let noScale = 1;
+let yesScale = 1;
+
+noBtn.addEventListener('click', () => {
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    noBtn.innerText = phrases[phraseIndex];
+    
+    noScale -= 0.1;
+    if (noScale < 0.2) noScale = 0.2;
+    noBtn.style.transform = `scale(${noScale})`;
+
+    yesScale += 0.5; // Зеленая кнопка растет еще быстрее
+    yesBtn.style.transform = `scale(${yesScale})`;
+});
+
+// Функция для создания сердечек
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+    document.body.appendChild(heart);
+    
+    setTimeout(() => heart.remove(), 5000);
+}
+
+yesBtn.addEventListener('click', () => {
+    // 1. Очищаем экран и показываем финальную картинку
+    mainContainer.innerHTML = `
+        <img src="https://media.tenor.com/9v4_RnoIisYAAAAi/peach-goma.gif" class="bear-img">
+        <div class="success-text">Урааа! ❤️</div>
+        <p style="font-size: 20px; color: #b91d47;">Жду когда напишешь!</p>
+    `;
+
+    // 2. Запускаем дождь из сердечек
+    setInterval(createHeart, 200);
+});
